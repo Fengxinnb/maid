@@ -2,21 +2,19 @@ import ChatButton from "@/components/buttons/chat-button";
 import { MaterialIconButton } from "@/components/buttons/icon-button";
 import ConfirmView from "@/components/views/confirm-view";
 import { useChat, useSystem } from "@/context";
-import useAuthentication from "@/hooks/use-authentication";
 import { validateMappings } from "@/utilities/mappings";
 import { randomUUID } from "expo-crypto";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system/legacy";
-import { useRouter } from "expo-router";
 import { addNode, getRoots } from "message-nodes";
 import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+// 封心 AI：已移除账号（登录/注册）体系，抽屉底部不再有任何账号入口，
+// 对话数据全部保存在本机。
 function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void } }) {
-  const router = useRouter();
-  const [authenticated, anonymous] = useAuthentication();
   const { mappings, setMappings, setRoot } = useChat();
   const { colorScheme, systemPrompt } = useSystem();
   const insets = useSafeAreaInsets();
@@ -105,18 +103,10 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
     },
     sessions: {
       flex: 1,
-      flexDirection: "column"
+      flexDirection: "column",
+      // 没有账号入口后，列表底部仍留出手势区域的安全距离。
+      paddingBottom: insets.bottom + 12,
     },
-    account: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-around",
-      paddingTop: 12,
-      paddingBottom: insets.bottom + 24,
-    },
-    accountText: {
-      color: colorScheme.primary,
-    }
   });
     
   return (
@@ -154,28 +144,6 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
         {roots.map((root, index) => <ChatButton testID={`chat-button-${index}`} key={root.id} node={root} />)}
       </KeyboardAwareScrollView>
       <View style={styles.divider} />
-      <View style={styles.account}>
-        {authenticated && !anonymous ? (
-          <TouchableOpacity testID="account-button" onPress={() => { navigation?.closeDrawer(); router.push("/account"); }}>
-            <Text style={styles.accountText}>账号</Text>
-          </TouchableOpacity>
-        ) : (
-          <>
-            <TouchableOpacity
-              testID="login-button"
-              onPress={() => { navigation?.closeDrawer(); router.push("/account/login"); }}
-            >
-                <Text style={styles.accountText}>登录</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              testID="register-button"
-              onPress={() => { navigation?.closeDrawer(); router.push("/account/register"); }}
-            >
-              <Text style={styles.accountText}>注册</Text>
-            </TouchableOpacity>
-          </>
-        )}
-      </View>
       <ConfirmView
         testID="clear-chats-confirm-modal"
         confirmTestID="clear-chats-confirm-button"

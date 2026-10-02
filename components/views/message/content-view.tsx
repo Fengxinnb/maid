@@ -2,7 +2,6 @@ import { MaterialCommunityIconButton } from "@/components/buttons/icon-button";
 import { useChat, useLLM, useSystem } from "@/context";
 import getMetadata from "@/utilities/metadata";
 import splitReasoning from "@/utilities/reasoning";
-import getSupabase from "@/utilities/supabase";
 import Markdown from '@novastera-oss/react-native-markdown-display';
 import { randomUUID } from "expo-crypto";
 import { addNode, branchNode, getConversation, MessageNode, updateContent } from "message-nodes";
@@ -10,57 +9,18 @@ import { useState } from "react";
 import { Alert, Image, StyleSheet, Text, TextInput, TouchableHighlight, View } from "react-native";
 import NeuralNetworkAnimation from "../neural-network-animation";
 
+// 封心 AI：已移除账号体系（含匿名登录），反馈不再上报到云端。
+// 保留本地提示，避免点赞/点踩按钮出现无响应或异常。
 export async function insertReport(
   content: string,
   provider: string,
   model: string,
   upvoted: boolean = false
 ): Promise<void> {
-  try {
-    // 1) Ensure we have a signed-in user (anonymous if needed)
-    const { data: sessionRes, error: sessionErr } = await getSupabase().auth.getSession();
-    if (sessionErr) console.warn("getSession error:", sessionErr);
-
-    let userId = sessionRes?.session?.user?.id;
-
-    if (!userId) {
-      const authAny = getSupabase().auth as any;
-
-      if (typeof authAny.signInAnonymously !== "function") {
-        console.error("signInAnonymously() not available. Update getSupabase-js and enable anonymous sign-ins in Supabase.");
-        Alert.alert("反馈提交失败", "当前无法登录。");
-        return;
-      }
-
-      const { data: anonRes, error: anonErr } = await authAny.signInAnonymously();
-      if (anonErr || !anonRes?.user?.id) {
-        console.error("Anonymous sign-in failed:", anonErr);
-        Alert.alert("反馈提交失败", "登录失败，请稍后重试。");
-        return;
-      }
-    }
-
-    // 2) Insert report
-    const { error } = await getSupabase().from("reports").insert({
-      content,
-      provider,
-      model,
-      upvoted
-    });
-
-    if (error) {
-      console.error("Error inserting report:", error);
-      Alert.alert("反馈提交失败", error.message);
-      return;
-    }
-
-    Alert.alert("反馈已提交", "感谢您的反馈！", [{ text: "好的" }], {
-      cancelable: true,
-    });
-  } catch (e) {
-    console.error("insertReport unexpected error:", e);
-    Alert.alert("反馈提交失败", "发生意外错误，请重试。");
-  }
+  console.warn("insertReport: 本地模式，反馈未上报", { content, provider, model, upvoted });
+  Alert.alert("反馈未提交", "当前为本地模式，反馈功能暂不可用。", [{ text: "好的" }], {
+    cancelable: true,
+  });
 }
 
 function MessageContentView({ message }: { message: MessageNode }) {

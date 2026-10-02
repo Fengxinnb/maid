@@ -35,11 +35,6 @@ function DefaultHeader(props: NativeStackHeaderProps) {
   // 应用为中文界面：路由名到中文标题的映射
   const titles: Record<string, string> = {
     chat: "对话",
-    account: "账号",
-    login: "登录",
-    register: "注册",
-    "change-password": "修改密码",
-    "reset-password": "重置密码",
     download: "下载模型",
     settings: "设置",
     about: "关于",

@@ -1,6 +1,5 @@
 import useMappings from "@/hooks/use-mappings";
 import useStoredString from "@/hooks/use-stored-string";
-import getSupabase from "@/utilities/supabase";
 import { deleteNode, MessageNode } from "message-nodes";
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 
@@ -21,17 +20,9 @@ export function ChatContextProvider({ children }: { children: ReactNode }) {
   const [editing, setEditing] = useState<string | undefined>(undefined);
   const [mappings, setMappings] = useMappings();
 
+  // 封心 AI：已移除账号体系，删除消息只作用于本机数据（不再同步云端）。
   const deleteMessage = async (id: string) => {
     setMappings((prev) => deleteNode(prev, id));
-    
-    const { error } = await getSupabase()
-      .from("messages")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      console.error("Error deleting message:", error);
-    }
   };
 
   const value = {
