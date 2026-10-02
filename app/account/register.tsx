@@ -44,19 +44,19 @@ function Register() {
   const handleRegister = async () => {
     if (submitting) return;
     if (!userNameValid) {
-      Alert.alert("Invalid Username", "Username must be 3–24 letters, digits, or underscores.");
+      Alert.alert("用户名不符合要求", "用户名只能包含 3-24 位字母、数字或下划线。");
       return;
     }
     if (!emailValid) {
-      Alert.alert("Invalid Email", "Please enter a valid email address.");
+      Alert.alert("邮箱格式不正确", "请输入有效的邮箱地址。");
       return;
     }
     if (!passwordValid) {
-      Alert.alert("Invalid Password", "Password must be at least 8 characters long.");
+      Alert.alert("密码不符合要求", "密码长度至少为 8 位。");
       return;
     }
     if (!passwordsMatch) {
-      Alert.alert("Passwords Don’t Match", "Please make sure both passwords are identical.");
+      Alert.alert("两次密码不一致", "请确认两次输入的密码完全相同。");
       return;
     }
 
@@ -70,14 +70,14 @@ function Register() {
       });
   
       if (error) {
-        Alert.alert("Registration Failed", error.message);
+        Alert.alert("注册失败", error.message);
         return;
       }
       
-      Alert.alert("Registration Successful", "Your account has been created successfully.");
+      Alert.alert("注册成功", "您的账号已创建成功。");
       router.replace("/account/login");
     } catch (error: any) {
-      Alert.alert("Registration Failed", error.message);
+      Alert.alert("注册失败", error.message);
     } finally {
       setSubmitting(false);
     }
@@ -143,11 +143,11 @@ function Register() {
       bottomOffset={16}
     >
       <View testID="register-page" style={styles.view}>
-        <Text style={styles.title}>Create An Account</Text>
+        <Text style={styles.title}>创建账号</Text>
 
         <TextInput
           style={styles.input}
-          placeholder="Username"
+          placeholder="用户名"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={userName}
           onChangeText={setUserName}
@@ -156,7 +156,7 @@ function Register() {
 
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="邮箱"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={email}
           onChangeText={setEmail}
@@ -166,7 +166,7 @@ function Register() {
 
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="密码"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={password}
           onChangeText={setPassword}
@@ -179,7 +179,7 @@ function Register() {
 
         <TextInput
           style={styles.input}
-          placeholder="Confirm Password"
+          placeholder="确认密码"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={passwordConfirm}
           onChangeText={setPasswordConfirm}
@@ -198,12 +198,12 @@ function Register() {
           {submitting ? (
             <ActivityIndicator color={colorScheme.onPrimary} />
           ) : (
-            <Text style={styles.buttonText}>Register</Text>
+            <Text style={styles.buttonText}>注册</Text>
           )}
         </TouchableOpacity>
 
         <TouchableOpacity testID="login-link" onPress={() => router.replace("/account/login")}>
-          <Text style={styles.linkText}>Already have an account? Log in</Text>
+          <Text style={styles.linkText}>已有账号？去登录</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>

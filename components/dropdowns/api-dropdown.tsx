@@ -30,7 +30,7 @@ function ApiDropdown() {
   return (
     <View style={styles.view}>
       <Text style={styles.title}>
-        Language Model API
+        语言模型接口
       </Text>
       <Dropdown
         items={items}

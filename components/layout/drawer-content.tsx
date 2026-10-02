@@ -61,7 +61,7 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
       prev,
       id,
       "system",
-      systemPrompt || "You are a helpful assistant.",
+      systemPrompt || "你是一个乐于助人的助手。",
       id,
       undefined,
       undefined,
@@ -122,7 +122,7 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
   return (
     <View testID="drawer-content" style={styles.view}>
       <View style={styles.header}>
-        <Text style={styles.controlsText}>Chats</Text>
+        <Text style={styles.controlsText}>对话列表</Text>
         <View style={styles.controls}>
           <MaterialIconButton
             testID="load-mappings-button"
@@ -157,7 +157,7 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
       <View style={styles.account}>
         {authenticated && !anonymous ? (
           <TouchableOpacity testID="account-button" onPress={() => { navigation?.closeDrawer(); router.push("/account"); }}>
-            <Text style={styles.accountText}>Account</Text>
+            <Text style={styles.accountText}>账号</Text>
           </TouchableOpacity>
         ) : (
           <>
@@ -165,13 +165,13 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
               testID="login-button"
               onPress={() => { navigation?.closeDrawer(); router.push("/account/login"); }}
             >
-                <Text style={styles.accountText}>Login</Text>
+                <Text style={styles.accountText}>登录</Text>
             </TouchableOpacity>
             <TouchableOpacity
               testID="register-button"
               onPress={() => { navigation?.closeDrawer(); router.push("/account/register"); }}
             >
-              <Text style={styles.accountText}>Register</Text>
+              <Text style={styles.accountText}>注册</Text>
             </TouchableOpacity>
           </>
         )}
@@ -181,7 +181,7 @@ function DrawerContent({ navigation }: { navigation?: { closeDrawer: () => void 
         confirmTestID="clear-chats-confirm-button"
         cancelTestID="clear-chats-cancel-button"
         visible={showClearConfirm}
-        message="Are you sure you want to clear all chats? This action cannot be undone."
+        message="确定要清空所有对话吗？此操作不可恢复。"
         onConfirm={clearChats}
         onCancel={() => setShowClearConfirm(false)}
       />

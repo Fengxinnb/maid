@@ -21,7 +21,7 @@ function ModelDropdown({ small }: { small?: boolean }) {
     return (
       <Dropdown
         items={items}
-        selectedValue={model ?? "Select Model"}
+        selectedValue={model ?? "选择模型"}
         onValueChange={setModel!}
       />
     );
@@ -42,10 +42,10 @@ function ModelDropdown({ small }: { small?: boolean }) {
   
   return (
     <View style={styles.row}>
-      <Text style={styles.title}>{type} Model</Text>
+      <Text style={styles.title}>{type} 模型</Text>
       <Dropdown
         items={items}
-        selectedValue={model ?? "Select Model"}
+        selectedValue={model ?? "选择模型"}
         onValueChange={setModel!}
       />
     </View>

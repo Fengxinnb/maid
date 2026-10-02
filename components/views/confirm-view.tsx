@@ -19,8 +19,8 @@ function ConfirmView({
   cancelTestID,
   visible,
   message,
-  confirmLabel = "Yes",
-  cancelLabel = "No",
+  confirmLabel = "确定",
+  cancelLabel = "取消",
   onConfirm,
   onCancel,
 }: ConfirmViewProps) {

@@ -69,14 +69,14 @@ function HeaderView() {
           onPress={addHeader}
         >
           <Text style={styles.button}>
-            Add Header
+            添加请求头
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={clearHeaders}
         >
           <Text style={styles.button}>
-            Clear Headers
+            清空请求头
           </Text>
         </TouchableOpacity>
       </View>
@@ -159,14 +159,14 @@ function HeaderViewItem(props: HeaderViewItemProps) {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Key"
+        placeholder="键"
         placeholderTextColor={colorScheme.onSurface}
         value={key}
         onChangeText={setKey}
       />
       <TextInput
         style={styles.input}
-        placeholder="Value"
+        placeholder="值"
         placeholderTextColor={colorScheme.onSurface}
         value={value}
         onChangeText={updateParameter}

@@ -32,13 +32,13 @@ function ModelFileButtons() {
       <TouchableOpacity
         onPress={pickModelFile}
       >
-        <Text style={styles.button}>Load Model</Text>
+        <Text style={styles.button}>加载模型</Text>
       </TouchableOpacity>
       {projectorKey && <Text style={styles.label}>{projectorKey}</Text>}
       <TouchableOpacity
         onPress={pickProjectorFile}
       >
-        <Text style={styles.button}>Load Projector</Text>
+        <Text style={styles.button}>加载投影文件</Text>
       </TouchableOpacity>
     </View>
   );

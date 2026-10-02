@@ -33,7 +33,7 @@ function ClearButtons() {
   return (
     <View style={styles.view}>
       <TouchableOpacity onPress={clearAll}>
-        <Text style={styles.button}>Clear Cache</Text>
+        <Text style={styles.button}>清除缓存</Text>
       </TouchableOpacity>
     </View>
   );

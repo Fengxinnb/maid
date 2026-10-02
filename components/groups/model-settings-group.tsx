@@ -29,7 +29,7 @@ function ModelSettingsGroup() {
 
   return (
     <View style={styles.view}>
-      <Text style={styles.title}>Model Settings</Text>
+      <Text style={styles.title}>模型设置</Text>
       <VoiceDropdown />
       <ApiDropdown />
       <ModelDropdown />

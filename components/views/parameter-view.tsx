@@ -67,14 +67,14 @@ function ParameterView() {
           onPress={addParameter}
         >
           <Text style={styles.button}>
-            Add Parameter
+            添加参数
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={clearParameters}
         >
           <Text style={styles.button}>
-            Clear Parameters
+            清空参数
           </Text>
         </TouchableOpacity>
       </View>
@@ -173,14 +173,14 @@ function ParameterViewItem(props: ParameterViewItemProps) {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Key"
+        placeholder="键"
         placeholderTextColor={colorScheme.onSurface}
         value={key}
         onChangeText={setKey}
       />
       <TextInput
         style={styles.input}
-        placeholder="Value"
+        placeholder="值"
         placeholderTextColor={colorScheme.onSurface}
         value={value}
         onChangeText={updateParameter}

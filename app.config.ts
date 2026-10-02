@@ -3,16 +3,16 @@ import type { ExpoConfig } from "expo/config";
 
 export default ({ config }: { config: ExpoConfig }): ExpoConfig => ({
   ...config,
-  name: "maid",
-  slug: "maid",
+  name: "封心 AI",
+  slug: "fengxin-ai",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
-  scheme: "maid",
+  scheme: "fengxin",
   userInterfaceStyle: "automatic",
 
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.danemadsen.maid",
+    bundleIdentifier: "fengxin.jjshs",
   },
 
   android: {
@@ -20,7 +20,7 @@ export default ({ config }: { config: ExpoConfig }): ExpoConfig => ({
       foregroundImage: "./assets/images/adaptive-icon.png",
       backgroundColor: "#000000",
     },
-    package: "com.danemadsen.maid",
+    package: "fengxin.jjshs",
     permissions: [
       "android.permission.RECORD_AUDIO",
       "android.permission.MODIFY_AUDIO_SETTINGS",
@@ -76,8 +76,8 @@ export default ({ config }: { config: ExpoConfig }): ExpoConfig => ({
     [
       "expo-speech-recognition",
       {
-        microphonePermission: "Allow $(PRODUCT_NAME) to use the microphone.",
-        speechRecognitionPermission: "Allow $(PRODUCT_NAME) to use speech recognition.",
+        microphonePermission: "允许 $(PRODUCT_NAME) 使用麦克风。",
+        speechRecognitionPermission: "允许 $(PRODUCT_NAME) 使用语音识别。",
         androidSpeechServicePackages: ["com.google.android.googlequicksearchbox", "com.google.android.tts"]
       }
     ],

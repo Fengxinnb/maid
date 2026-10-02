@@ -33,7 +33,15 @@ function MessageRoleView({ message }: { message: MessageNode }) {
     assistant: <AssistantImageView size={28} />,
   };
 
-  const role = roleNames[message.role] ?? (message.role.charAt(0).toUpperCase() + message.role.slice(1));
+  // 内置角色的中文名称，未自定义用户名/助手名时使用
+  const defaultRoles: Record<string, string> = {
+    user: "用户",
+    assistant: "助手",
+    system: "系统",
+    tool: "工具",
+  };
+
+  const role = roleNames[message.role] ?? defaultRoles[message.role] ?? message.role;
   const profile = avatars[message.role] ?? <Icon name="account-cog" size={28} color={colorScheme.secondary} />;
 
   return (

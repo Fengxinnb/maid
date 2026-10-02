@@ -103,7 +103,7 @@ export default function Index() {
           onPress={() => router.push("/account/change-password" as any)}
         >
           <Text style={[styles.buttonTextBase, styles.buttonTextPrimary]}>
-            Change Password
+            修改密码
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -113,7 +113,7 @@ export default function Index() {
           <Text
             style={[styles.buttonTextBase, styles.buttonTextDanger]}
           >
-            Delete Account
+            注销账号
           </Text>
         </TouchableOpacity>
       </View>
@@ -122,7 +122,7 @@ export default function Index() {
         confirmTestID="delete-confirm-button"
         cancelTestID="delete-cancel-button"
         visible={showDeleteConfirm}
-        message="Are you sure you want to delete your account?"
+        message="确定要注销您的账号吗？此操作不可恢复。"
         onConfirm={() => {
           setShowDeleteConfirm(false);
           deleteAccount();

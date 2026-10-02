@@ -36,11 +36,11 @@ function PromptButton({ promptText, setPromptText, images, setImages }: PromptBu
         next,
         parent,
         "system",
-        systemPrompt || "You are a helpful assistant.",
+        systemPrompt || "你是一个乐于助人的助手。",
         parent,
         undefined,
         undefined,
-        { title: "New Chat", ...getMetadata() }
+        { title: "新对话", ...getMetadata() }
       );
     }
 
@@ -110,12 +110,12 @@ function PromptButton({ promptText, setPromptText, images, setImages }: PromptBu
         granted = request.granted;
       }
       else {
-        console.warn("Microphone permission denied and cannot ask again.");
+        console.warn("麦克风权限被拒绝，且无法再次询问。");
         return;
       }
 
       if (!granted) {
-        console.warn("Microphone permission denied.");
+        console.warn("麦克风权限被拒绝。");
         return;
       }
     } catch (error) {

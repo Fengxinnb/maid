@@ -36,11 +36,11 @@ function SystemSettingsGroup() {
       <Text
         style={styles.title}
       >
-        System Settings
+        系统设置
       </Text>
       <TextInput
         style={styles.input}
-        placeholder="System Prompt"
+        placeholder="系统提示词"
         placeholderTextColor={colorScheme.onSurface}
         value={systemPrompt}
         onChangeText={setSystemPrompt}

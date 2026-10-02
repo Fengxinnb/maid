@@ -30,7 +30,7 @@ const SystemContext = createContext<SystemContextProps | undefined>(undefined);
 export function SystemContextProvider({ children }: { children: ReactNode }) {
   const [userName, setUserName] = useSyncedString({
     key: "user_name",
-    defaultValue: "User",
+    defaultValue: "我",
   });
   const [userImage, setUserImage] = useSyncedImage({
     key: "user-image",
@@ -39,7 +39,7 @@ export function SystemContextProvider({ children }: { children: ReactNode }) {
 
   const [assistantName, setAssistantName] = useSyncedString({
     key: "assistant_name",
-    defaultValue: "Assistant",
+    defaultValue: "助手",
   });
   const [assistantImage, setAssistantImage] = useSyncedImage({
     key: "assistant-image",

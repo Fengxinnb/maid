@@ -23,11 +23,11 @@ export function validateMappings(mappings: Record<string, MessageNode<string>>):
     const newRoot: MessageNode<string> = {
       id: root.id,
       role: "system",
-      content: "You are a helpful assistant.",
+      content: "你是一个乐于助人的助手。",
       root: root.id,
       child: root.child,
       metadata: {
-        title: "New Chat",
+        title: "新对话",
         createTime: new Date().toISOString(),
         updateTime: new Date().toISOString(),
       }

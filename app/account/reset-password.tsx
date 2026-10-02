@@ -40,7 +40,7 @@ export default function ResetPassword() {
     if (submitting) return;
 
     if (!emailValid) {
-      Alert.alert("Invalid Email", "Please enter a valid email address.");
+      Alert.alert("邮箱格式不正确", "请输入有效的邮箱地址。");
       return;
     }
 
@@ -50,13 +50,13 @@ export default function ResetPassword() {
       const { error } = await getSupabase().auth.resetPasswordForEmail(email.trim());
 
       if (error) {
-        Alert.alert("Error", error.message);
+        Alert.alert("错误", error.message);
         return;
       }
 
       setStep("otp");
     } catch (error: any) {
-      Alert.alert("Error", error.message);
+      Alert.alert("错误", error.message);
     } finally {
       setSubmitting(false);
     }
@@ -66,15 +66,15 @@ export default function ResetPassword() {
     if (submitting) return;
 
     if (!otp) {
-      Alert.alert("Missing Code", "Please enter the code sent to your email.");
+      Alert.alert("验证码未填写", "请输入发送到您邮箱的验证码。");
       return;
     }
     if (!newPasswordValid) {
-      Alert.alert("Invalid Password", "New password must be at least 8 characters long.");
+      Alert.alert("密码不符合要求", "新密码长度至少为 8 位。");
       return;
     }
     if (!passwordsMatch) {
-      Alert.alert("Password Mismatch", "New passwords do not match.");
+      Alert.alert("两次密码不一致", "两次输入的新密码不一致。");
       return;
     }
 
@@ -88,7 +88,7 @@ export default function ResetPassword() {
       });
 
       if (verifyError) {
-        Alert.alert("Invalid Code", verifyError.message);
+        Alert.alert("验证码错误", verifyError.message);
         return;
       }
 
@@ -97,15 +97,15 @@ export default function ResetPassword() {
       });
 
       if (updateError) {
-        Alert.alert("Update Failed", updateError.message);
+        Alert.alert("重置失败", updateError.message);
         return;
       }
 
-      Alert.alert("Success", "Your password has been reset.", [
-        { text: "OK", onPress: () => router.replace("/account/login") },
+      Alert.alert("操作成功", "您的密码已重置。", [
+        { text: "好的", onPress: () => router.replace("/account/login") },
       ]);
     } catch (error: any) {
-      Alert.alert("Error", error.message);
+      Alert.alert("错误", error.message);
     } finally {
       setSubmitting(false);
     }
@@ -178,14 +178,14 @@ export default function ResetPassword() {
         bottomOffset={16}
       >
         <View testID="reset-password-page" style={styles.view}>
-          <Text style={styles.title}>Reset Password</Text>
+          <Text style={styles.title}>重置密码</Text>
           <Text style={styles.subtitle}>
-            Enter your email and we'll send you a code to reset your password.
+            请输入您的邮箱，我们会发送一枚验证码用于重置密码。
           </Text>
 
           <TextInput
             style={styles.input}
-            placeholder="Email"
+            placeholder="邮箱"
             placeholderTextColor={colorScheme.onSurfaceVariant}
             value={email}
             onChangeText={setEmail}
@@ -202,12 +202,12 @@ export default function ResetPassword() {
             {submitting ? (
               <ActivityIndicator color={colorScheme.onPrimary} />
             ) : (
-              <Text style={styles.buttonText}>Send Code</Text>
+              <Text style={styles.buttonText}>发送验证码</Text>
             )}
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => router.back()}>
-            <Text style={styles.linkText}>Back to Login</Text>
+            <Text style={styles.linkText}>返回登录</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
@@ -221,14 +221,14 @@ export default function ResetPassword() {
       bottomOffset={16}
     >
       <View testID="reset-password-otp-page" style={styles.view}>
-        <Text style={styles.title}>Enter Code</Text>
+        <Text style={styles.title}>输入验证码</Text>
         <Text style={styles.subtitle}>
-          We sent a code to {email}. Enter it below along with your new password.
+          我们已向 {email} 发送验证码，请在下方输入并设置新密码。
         </Text>
 
         <TextInput
           style={styles.input}
-          placeholder="6-digit code"
+          placeholder="6 位验证码"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={otp}
           onChangeText={setOtp}
@@ -241,7 +241,7 @@ export default function ResetPassword() {
 
         <TextInput
           style={styles.input}
-          placeholder="New Password"
+          placeholder="新密码"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={newPassword}
           onChangeText={setNewPassword}
@@ -254,7 +254,7 @@ export default function ResetPassword() {
 
         <TextInput
           style={styles.input}
-          placeholder="Confirm New Password"
+          placeholder="确认新密码"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
@@ -273,12 +273,12 @@ export default function ResetPassword() {
           {submitting ? (
             <ActivityIndicator color={colorScheme.onPrimary} />
           ) : (
-            <Text style={styles.buttonText}>Reset Password</Text>
+            <Text style={styles.buttonText}>重置密码</Text>
           )}
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => setStep("email")}>
-          <Text style={styles.linkText}>Resend code</Text>
+          <Text style={styles.linkText}>重新发送验证码</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>

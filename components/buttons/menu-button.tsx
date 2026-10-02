@@ -58,7 +58,7 @@ function MenuButton() {
             router.push("/settings");
           }}
         >
-          <Text style={styles.link}>Settings</Text>
+          <Text style={styles.link}>设置</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -68,7 +68,7 @@ function MenuButton() {
             router.push("/about");
           }}
         >
-          <Text style={styles.link}>About</Text>
+          <Text style={styles.link}>关于</Text>
         </TouchableOpacity>
       </Popover>
     </View>

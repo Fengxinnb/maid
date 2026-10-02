@@ -61,34 +61,34 @@ function About() {
       style={styles.view}
     >
       <View style={styles.row}>
-        <Text style={styles.label}>App Version</Text>
+        <Text style={styles.label}>应用版本</Text>
         <Text style={styles.value}>{Application.nativeApplicationVersion}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>App Build</Text>
+        <Text style={styles.label}>构建编号</Text>
         <Text style={styles.value}>{Application.nativeBuildVersion}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Device Name</Text>
+        <Text style={styles.label}>设备型号</Text>
         <Text style={styles.value}>{Device.modelName}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>RAM</Text>
+        <Text style={styles.label}>运行内存</Text>
         <Text style={styles.value}>{((Device.totalMemory ?? 0) / (1024 * 1024 * 1024)).toFixed(2)} GB</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>CPU</Text>
+        <Text style={styles.label}>处理器架构</Text>
         <Text style={styles.value}>{Device.supportedCpuArchitectures?.join(", ")}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>OS Version</Text>
+        <Text style={styles.label}>系统版本</Text>
         <Text style={styles.value}>{Device.osVersion}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>OS Build</Text>
+        <Text style={styles.label}>系统版本号</Text>
         <Text style={styles.value}>{Device.osBuildId}</Text>
       </View>
-      <Text style={styles.title}>Logs</Text>
+      <Text style={styles.title}>运行日志</Text>
       <View style={styles.logView}>
         <ScrollView contentContainerStyle={styles.scrollView}>
           <ScrollView

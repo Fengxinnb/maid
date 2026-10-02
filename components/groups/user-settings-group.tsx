@@ -39,7 +39,7 @@ function UserSettingsGroup() {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      alert("Permission to access camera roll is required!");
+      alert("需要相册访问权限！");
       return;
     }
 
@@ -60,19 +60,19 @@ function UserSettingsGroup() {
       style={styles.view}
     >
       <Text style={styles.title}>
-        User Settings
+        用户设置
       </Text>
       <UserImageView size={80} />
       <TouchableOpacity
         onPress={onPress}
       >
         <Text style={styles.button}>
-          Load User Image
+          加载用户头像
         </Text>
       </TouchableOpacity>
       <TextInput
         style={styles.input}
-        placeholder="User Name"
+        placeholder="用户名称"
         placeholderTextColor={colorScheme.onSurface}
         underlineColorAndroid="transparent"
         value={userName}

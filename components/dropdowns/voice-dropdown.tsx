@@ -67,8 +67,8 @@ function VoiceDropdown() {
       label: (
         <View style={styles.label}>
           <Text style={styles.title}>{voice.name}</Text>
-          <Text style={styles.subtitle}>{`Language: ${voice.language}`}</Text>
-          <Text style={styles.subtitle}>{`Quality: ${voice.quality}`}</Text>
+          <Text style={styles.subtitle}>{`语言: ${voice.language}`}</Text>
+          <Text style={styles.subtitle}>{`音质: ${voice.quality}`}</Text>
         </View>
       ),
       selectedLabel: voice.name,
@@ -81,7 +81,7 @@ function VoiceDropdown() {
   return (
     <View style={styles.view}>
       <Text style={styles.title}>
-        Voice
+        语音
       </Text>
       <Dropdown<Voice | undefined>
         items={items}

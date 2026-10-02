@@ -24,7 +24,7 @@ function BaseUrlField() {
   return (
     <TextInput
       style={styles.input}
-      placeholder="Base URL"
+      placeholder="接口地址"
       placeholderTextColor={colorScheme.onSurface}
       underlineColorAndroid="transparent"
       value={baseURL}

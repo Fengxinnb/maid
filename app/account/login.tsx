@@ -37,11 +37,11 @@ function Login() {
     if (submitting) return;
 
     if (!emailValid) {
-      Alert.alert("Invalid Email", "Please enter a valid email address.");
+      Alert.alert("邮箱格式不正确", "请输入有效的邮箱地址。");
       return;
     }
     if (!passwordValid) {
-      Alert.alert("Invalid Password", "Password must be at least 8 characters long.");
+      Alert.alert("密码不符合要求", "密码长度至少为 8 位。");
       return;
     }
 
@@ -54,19 +54,19 @@ function Login() {
       });
 
       if (error) {
-        Alert.alert("Login Failed", error.message);
+        Alert.alert("登录失败", error.message);
         return;
       }
 
       if (!data?.user) {
-        Alert.alert("Login Failed", "Unexpected response from server.");
+        Alert.alert("登录失败", "服务器返回异常，请稍后重试。");
         return;
       }
 
-      Alert.alert("Login Successful", "You have been logged in successfully.");
+      Alert.alert("登录成功", "您已成功登录。");
       router.replace("/chat");
     } catch (error: any) {
-      Alert.alert("Login Failed", error.message);
+      Alert.alert("登录失败", error.message);
     } finally {
       setSubmitting(false);
     }
@@ -132,11 +132,11 @@ function Login() {
       bottomOffset={16}
     >
       <View testID="login-page" style={styles.view}>
-        <Text style={styles.title}>Welcome Back</Text>
+        <Text style={styles.title}>欢迎回来</Text>
 
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="邮箱"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={email}
           onChangeText={setEmail}
@@ -146,7 +146,7 @@ function Login() {
 
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="密码"
           placeholderTextColor={colorScheme.onSurfaceVariant}
           value={password}
           onChangeText={setPassword}
@@ -165,16 +165,16 @@ function Login() {
           {submitting ? (
             <ActivityIndicator color={colorScheme.onPrimary} />
           ) : (
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>登录</Text>
           )}
         </TouchableOpacity>
 
         <TouchableOpacity testID="register-link" onPress={() => router.replace("/account/register")}>
-          <Text style={styles.linkText}>Don’t have an account? Register</Text>
+          <Text style={styles.linkText}>还没有账号？立即注册</Text>
         </TouchableOpacity>
 
         <TouchableOpacity testID="forgot-password-link" onPress={() => router.push("/account/reset-password" as any)}>
-          <Text style={styles.linkText}>Forgot password?</Text>
+          <Text style={styles.linkText}>忘记密码？</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>

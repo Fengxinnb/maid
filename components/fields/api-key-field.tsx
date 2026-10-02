@@ -24,7 +24,7 @@ function ApiKeyField() {
   return (
     <TextInput
       style={styles.input}
-      placeholder="API Key"
+      placeholder="API 密钥"
       placeholderTextColor={colorScheme.onSurface}
       underlineColorAndroid="transparent"
       value={apiKey}

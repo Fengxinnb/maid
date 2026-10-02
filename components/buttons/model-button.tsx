@@ -96,7 +96,7 @@ function ModelButton() {
             pickModelFile();
           }}
         >
-          <Text style={styles.popoverText}>Load Model</Text>
+          <Text style={styles.popoverText}>加载模型</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -107,7 +107,7 @@ function ModelButton() {
             router.push("/download");
           }}
         >
-          <Text style={styles.popoverText}>Download Model</Text>
+          <Text style={styles.popoverText}>下载模型</Text>
         </TouchableOpacity>
       </Popover>
     </View>

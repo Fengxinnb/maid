@@ -33,9 +33,15 @@ function LogEntryView({ entry }: { entry: LogEntry }) {
     },
   });
 
+  const levelNames: Record<string, string> = {
+    log: "日志",
+    warn: "警告",
+    error: "错误",
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.level}>{entry.level.toUpperCase()}</Text>
+      <Text style={styles.level}>{levelNames[entry.level] ?? entry.level.toUpperCase()}</Text>
       <Text style={styles.message}>{entry.message}</Text>
     </View>
   );

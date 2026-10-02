@@ -39,7 +39,7 @@ function AssistantSettingsGroup() {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      alert("Permission to access camera roll is required!");
+      alert("需要相册访问权限！");
       return;
     }
 
@@ -60,19 +60,19 @@ function AssistantSettingsGroup() {
       style={styles.view}
     >
       <Text style={styles.title}>
-        Assistant Settings
+        助手设置
       </Text>
       <AssistantImageView size={80} />
       <TouchableOpacity
         onPress={onPress}
       >
         <Text style={styles.button}>
-          Load Assistant Image
+          加载助手头像
         </Text>
       </TouchableOpacity>
       <TextInput
         style={styles.input}
-        placeholder="Assistant Name"
+        placeholder="助手名称"
         placeholderTextColor={colorScheme.onSurface}
         underlineColorAndroid="transparent"
         value={assistantName}

@@ -24,7 +24,7 @@ function ThemeSettingsGroup() {
 
   return (
     <View style={styles.view}>
-      <Text style={styles.title}>Accent Color</Text>
+      <Text style={styles.title}>主题色</Text>
       <ColorPicker
         style={styles.colorPicker}
         value={accentColor}

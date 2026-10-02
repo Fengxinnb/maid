@@ -272,7 +272,7 @@ function ModelDownload({ source }: { source: HuggingfaceModel }) {
 
       {percent !== undefined && (
         <Text style={styles.name}>
-          {projectorFileName ? `Model: ${percent}%  Proj: ${projectorPercent ?? 0}%` : `${percent}%`}
+          {projectorFileName ? `模型: ${percent}%  投影: ${projectorPercent ?? 0}%` : `${percent}%`}
         </Text>
       )}
 
@@ -296,7 +296,7 @@ function ModelDownload({ source }: { source: HuggingfaceModel }) {
             onPress={deleteModel}
           />
           <TouchableOpacity onPress={selectModel}>
-            <Text style={styles.textButton}>Select</Text>
+            <Text style={styles.textButton}>选择</Text>
           </TouchableOpacity>
         </View>
       )}

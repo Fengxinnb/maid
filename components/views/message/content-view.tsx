@@ -28,14 +28,14 @@ export async function insertReport(
 
       if (typeof authAny.signInAnonymously !== "function") {
         console.error("signInAnonymously() not available. Update getSupabase-js and enable anonymous sign-ins in Supabase.");
-        Alert.alert("Couldn’t submit report", "Sign-in isn’t available right now.");
+        Alert.alert("反馈提交失败", "当前无法登录。");
         return;
       }
 
       const { data: anonRes, error: anonErr } = await authAny.signInAnonymously();
       if (anonErr || !anonRes?.user?.id) {
         console.error("Anonymous sign-in failed:", anonErr);
-        Alert.alert("Couldn’t submit report", "Sign-in failed. Please try again.");
+        Alert.alert("反馈提交失败", "登录失败，请稍后重试。");
         return;
       }
     }
@@ -50,16 +50,16 @@ export async function insertReport(
 
     if (error) {
       console.error("Error inserting report:", error);
-      Alert.alert("Couldn’t submit report", error.message);
+      Alert.alert("反馈提交失败", error.message);
       return;
     }
 
-    Alert.alert("Report Submitted", "Thank you for your feedback!", [{ text: "OK" }], {
+    Alert.alert("反馈已提交", "感谢您的反馈！", [{ text: "好的" }], {
       cancelable: true,
     });
   } catch (e) {
     console.error("insertReport unexpected error:", e);
-    Alert.alert("Couldn’t submit report", "Unexpected error. Please try again.");
+    Alert.alert("反馈提交失败", "发生意外错误，请重试。");
   }
 }
 
@@ -149,7 +149,7 @@ function MessageContentView({ message }: { message: MessageNode }) {
 
   const onEdit = () => {
     if (!message.root) {
-      Alert.alert("Error", "Cannot edit this message because its conversation root is missing.");
+      Alert.alert("错误", "无法编辑该消息：它所属的对话根节点已丢失。");
       return;
     }
 
@@ -247,7 +247,7 @@ function MessageContentView({ message }: { message: MessageNode }) {
       ))}
       {reasoning && (
         <TouchableHighlight style={styles.showReasoningButton} onPress={() => setShowReasoning(!showReasoning)}>
-          <Text style={styles.showReasoningButtonText}>{showReasoning ? "Hide Reasoning" : "Show Reasoning"}</Text>
+          <Text style={styles.showReasoningButtonText}>{showReasoning ? "隐藏推理过程" : "显示推理过程"}</Text>
         </TouchableHighlight>
       )}
       {reasoning && showReasoning && <Text style={styles.reasoning}>{reasoning}</Text>}
@@ -273,7 +273,7 @@ function MessageContentView({ message }: { message: MessageNode }) {
       {message.content.length === 0 && !message.child && (
         LLM.busy ? 
           <NeuralNetworkAnimation repeat={true} /> : 
-          <Text style={styles.reasoning}>[No content]</Text>
+          <Text style={styles.reasoning}>[无内容]</Text>
         )
       }
     </View>

@@ -37,7 +37,7 @@ function ChatButton({ node, testID }: { node: MessageNode<string>, testID?: stri
   const exportChat = async () => {
     const rootMapping = getRootMapping<string>(mappings, node.id);
 
-    const filename = `${node.metadata?.title || "New Chat"}.json`;
+    const filename = `${node.metadata?.title || "新对话"}.json`;
 
     const json = JSON.stringify(rootMapping, null, 2);
 
@@ -103,7 +103,7 @@ function ChatButton({ node, testID }: { node: MessageNode<string>, testID?: stri
           ]}
           numberOfLines={1}
         >
-          {node.metadata?.title || "New Chat"}
+          {node.metadata?.title || "新对话"}
         </Text>
       </TouchableOpacity>}
       {rename && <TextInput
@@ -134,19 +134,19 @@ function ChatButton({ node, testID }: { node: MessageNode<string>, testID?: stri
             setRename(true);
           }}
         >
-          <Text style={styles.popoverButton}>Rename</Text>
+          <Text style={styles.popoverButton}>重命名</Text>
         </TouchableOpacity>
         <TouchableOpacity
           testID={`${testID}-export`}
           onPress={exportChat}
         >
-          <Text style={styles.popoverButton}>Export</Text>
+          <Text style={styles.popoverButton}>导出</Text>
         </TouchableOpacity>
         <TouchableOpacity
           testID={`${testID}-delete`}
           onPress={deleteChat}
         >
-          <Text style={styles.popoverButton}>Delete</Text>
+          <Text style={styles.popoverButton}>删除</Text>
         </TouchableOpacity>
       </Popover>
     </>
