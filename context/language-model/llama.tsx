@@ -193,7 +193,7 @@ export function LlamaProvider({ children }: { children: ReactNode }) {
     const asset = file.assets[0];
 
     if (!/\.gguf$/i.test(asset.uri) || !(await isGGUF(asset.uri))) {
-      alert("Please select a valid GGUF model file");
+      alert("请选择有效的 GGUF 模型文件");
       return;
     }
 
@@ -219,7 +219,7 @@ export function LlamaProvider({ children }: { children: ReactNode }) {
     const asset = file.assets[0];
 
     if (!/\.mmproj$/i.test(asset.uri) && !/\.gguf$/i.test(asset.uri)) {
-      alert("Please select a multimodel projector file");
+      alert("请选择多模态投影（mmproj）文件");
       return;
     }
 

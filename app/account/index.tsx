@@ -61,7 +61,7 @@ export default function Index() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error ?? "Failed to delete account");
+        throw new Error(data.error ?? "注销账号失败");
       }
       else {
         await getSupabase().auth.signOut();

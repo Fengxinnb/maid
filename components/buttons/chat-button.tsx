@@ -114,7 +114,7 @@ function ChatButton({ node, testID }: { node: MessageNode<string>, testID?: stri
           styles.buttonText, 
           root === node.id ? styles.buttonTextActive : null
         ]}
-        defaultValue={node.metadata?.title || "New Chat"}
+        defaultValue={node.metadata?.title || "新对话"}
         onChange={(e) => setRenameEvent(e.nativeEvent.text)}
         onEndEditing={(e) => renameChat(e.nativeEvent.text)}
         autoFocus

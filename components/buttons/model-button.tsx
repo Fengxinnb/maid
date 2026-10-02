@@ -74,7 +74,7 @@ function ModelButton() {
       <TouchableOpacity testID="model-button" style={styles.button} onPress={open} activeOpacity={0.8}>
         <Icon name="chevron-triple-left" size={20} color={colorScheme.onPrimary} />
         <Text style={styles.text} numberOfLines={1}>
-          {modelKey ? modelKey : "Load Model"}
+          {modelKey ? modelKey : "加载模型"}
         </Text>
         <Icon name="chevron-triple-right" size={20} color={colorScheme.onPrimary} />
       </TouchableOpacity>

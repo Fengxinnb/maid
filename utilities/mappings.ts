@@ -42,7 +42,7 @@ export function validateMappings(mappings: Record<string, MessageNode<string>>):
 
   const emptyRoots = getRoots<string>(validMappings).filter(root => !root.content || root.content.trim().length === 0);
   emptyRoots.forEach(root => {
-    validMappings[root.id].content = "You are a helpful assistant.";
+    validMappings[root.id].content = "你是一个乐于助人的助手。";
   });
 
   const childlessRoots = getRoots<string>(validMappings).filter(root => !root.child);

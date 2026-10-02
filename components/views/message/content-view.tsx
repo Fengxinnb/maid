@@ -194,8 +194,8 @@ function MessageContentView({ message }: { message: MessageNode }) {
       );
     } catch (error) {
       Alert.alert(
-        "Edit failed",
-        "There was a problem requesting an updated response. Please try again."
+        "编辑失败",
+        "获取更新后的回复时出现问题，请重试。"
       );
     }
 
